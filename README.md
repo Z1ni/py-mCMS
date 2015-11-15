@@ -8,6 +8,8 @@ This is a simple single-user CMS which stores the pages in a SQLite database.
 
 Created with Python & [Flask](http://flask.pocoo.org/).
 
+For an example site, see my website: [Mark Mäkinen](http://markmakinen.net)
+
 Installation
 ------------
 
