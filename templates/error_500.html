@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}500 Internal Server Error{% endblock %}
+{% block subheader %}500 - Internal Server Error{% endblock %}
+{% block content %}
+<h2>Internal server error!</h2>
+If you are the administrator of this site, please check your configuration.<br>
+Otherwise, try loading this page again or return to the <a href="{{ url_for('main_page') }}">index</a> page.
+{% endblock %}

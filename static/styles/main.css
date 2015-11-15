@@ -1,0 +1,142 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  background-color: #222;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+a, a:visited {
+  color: white;
+}
+a:hover {
+  color: #777;
+}
+
+#header {
+  font-size: 30pt;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  border-bottom: 1px solid white;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#subheader {
+  font-style: italic;
+  font-size:15pt;
+}
+
+#content {
+  text-align: left;
+  background-color: #444;
+  padding: 15px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+  min-height: 700px;
+  border: 1px solid white;
+}
+
+#footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 20px;
+  width: 100%;
+  background-color: #444;
+}
+
+#login_form {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#navi {
+  width: 1000px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 50px;
+  background-color: #444;
+}
+
+#navi ul {
+  list-style: none;
+  padding: 0;
+  height: 100%;
+}
+
+#navi li {
+  display: inline-block;
+  margin: .2em;
+  height: 2.5em;
+  line-height: 2.5em;
+  background-color: #222;
+}
+
+#navi a {
+  text-decoration: none;
+  display: block;
+  width: 100px;
+  height: 100%;
+  border: 1px solid white;
+}
+
+#navi a:hover {
+  background-color: white;
+  color: black;
+}
+
+ul.flashes {
+  text-align: center;
+  list-style-type: none;
+  padding: 0;
+}
+
+.flashes li {
+  color: white;
+  padding: 5px;
+  border: 1px dashed white;
+  background-color: #333;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.admin_list {
+  border-collapse: collapse;
+}
+
+.admin_list th, td {
+  border: 1px solid white;
+  padding: 5px;
+}
+
+.admin_list th {
+  background-color: #999;
+  color: black;
+}
+
+.admin_button {
+  background-color: rgba(255, 255, 0, 0.6);
+}
+
+#admin_link a {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: #2B2B2B;
+}

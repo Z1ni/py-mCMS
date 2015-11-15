@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block subheader %}Login{% endblock %}
+{% block content %}
+{% if error %}<div class="error"><strong>Error:</strong> {{ error }}</div>{% endif %}
+<form action="{{ url_for('login') }}" method="post">
+	<table id="login_form">
+	<tr>
+		<td>Username:</td>
+		<td><input type="text" name="username"></td>
+	</tr>
+	<tr>
+		<td>Password:</td>
+		<td><input type="password" name="password"></td>
+	</tr>
+	<tr><td colspan="2"><input type="submit" value="Login"></td>
+	</table>
+</form>
+{% endblock %}

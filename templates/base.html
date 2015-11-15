@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<!--
+Powered by py-mCMS
+-->
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="author" content="{{ get_config('author') }}">
+		<meta name="description" content="{{ get_config('description') }}">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		{% for style in get_config('styles') %}
+			<link rel="stylesheet" href="{{ url_for('static', filename='styles/' + style) }}">
+		{% endfor %}
+		<title>{% block title %}{% endblock %} - {{ get_config('name') }}</title>
+		{% block head_add %}{% endblock %}
+	</head>
+	<body>
+
+		<div id="header">{{ get_config('name') }}</div>
+		<div id="subheader">{% block subheader %}{% endblock %}</div>
+
+		<div id="navi">
+			<ul>
+			{% if pages %}
+			{% for page in pages if page.available == 1 %}
+				<li><a href="{{ url_for('page', pagename=page.shortname) }}">{{ page.name }}</a></li>
+			{% endfor %}
+			{% if session.logged_in %}
+				<li><a class="admin_button" href="{{ url_for('admin') }}">Admin</a></li>
+				<li><a class="admin_button" href="{{ url_for('logout') }}">Logout</a></li>
+			{% endif %}
+			{% endif %}
+			</ul>
+		</div>
+
+		<div id="content">
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					<ul class="flashes">
+					{% for message in messages %}
+						<li>{{ message }}</li>
+					{% endfor %}
+					</ul>
+				{% endif %}
+			{% endwith %}
+			{% block content %}{% endblock %}
+		</div>
+
+		<div id="footer">
+			Powered by <a href="https://github.com/Z1ni/py-mCMS">py-mCMS</a>
+		</div>
+
+		{% if not session.logged_in %}
+		<div id="admin_link"><a href="{{ url_for('admin') }}">A</a></div>
+		{% endif %}
+
+	</body>
+</html>

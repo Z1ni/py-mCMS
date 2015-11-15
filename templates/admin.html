@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Site administration{% endblock %}
+{% block subheader %}Site administration{% endblock %}
+{% block content %}
+
+<p><a href="{{ url_for('add_page') }}">Add page</a></p>
+
+<h2>Available pages:</h2>
+{% if pages is not none %}
+	<table class="admin_list">
+	<tr>
+		<th>Order</th>
+		<th>Short name</th>
+		<th>Name</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+	{% for page in pages if page.available == 1 %}
+		<tr>
+			<td>{{ page.page_order }}</td>
+			<td>{{ page.shortname }}</td>
+			<td>{{ page.name }}</td>
+			<td><a href="{{ url_for('edit_page', pagename=page.shortname) }}">Edit</a></td>
+			<td><a href="{{ url_for('delete_page', shortname=page.shortname) }}">Delete</a></td>
+			<td><a href="{{ url_for('hide_page', shortname=page.shortname) }}">Hide</td>
+		</tr>
+	{% else %}
+		<tr><td colspan="6">No available pages.</td></tr>
+	{% endfor %}
+	</table>
+{% else %}
+	<p>No available pages.</p>
+{% endif %}
+<br>
+
+<h2>Hidden pages:</h2>
+{% if pages is not none %}
+	<table class="admin_list">
+	<tr>
+		<th>Order</th>
+		<th>Short name</th>
+		<th>Name</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+	{% for page in pages if page.available != 1 %} {# This will catch bugged out pages where available is something other than 0 or 1 #}
+		<tr>
+			<td>{{ page.page_order }}</td>
+			<td>{{ page.shortname }}</td>
+			<td>{{ page.name }}</td>
+			<td><a href="{{ url_for('edit_page', pagename=page.shortname) }}">Edit</a></td>
+			<td><a href="{{ url_for('delete_page', shortname=page.shortname) }}">Delete</a></td>
+			<td><a href="{{ url_for('show_page', shortname=page.shortname) }}">Show</td>
+		</tr>
+	{% else %}
+		<tr><td colspan="6">No hidden pages.</td></tr>
+	{% endfor %}
+	</table>
+{% else %}
+	<p>No hidden pages.</p>
+{% endif %}
+
+{% endblock %}

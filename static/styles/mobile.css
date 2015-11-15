@@ -1,0 +1,23 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+
+@media screen and (max-width: 1065px) {
+
+  #header {
+    width: 80%;
+  }
+
+  #content {
+    padding: 5px;
+    width: auto;
+  }
+
+  #navi {
+    width: 100%;
+    height: auto;
+  }
+
+  .flashes li {
+    width: auto;
+  }
+
+}

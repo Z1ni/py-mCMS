@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block head_add %}
+<script src="{{ get_config('ckeditor.js_url') }}"></script>
+{% endblock %}
+{% block title %}Add page{% endblock %}
+{% block subheader %}Add page{% endblock %}
+{% block content %}
+
+<form action="{{ url_for('add_page') }}" method="POST">
+	<table>
+		<tr>
+			<td>Order:</td>
+			<td><input type="number" name="order" value="{{ order }}"></td>
+		</tr>
+		<tr>
+			<td>Short name (in URL):</td>
+			<td><input type="text" name="shortname" value="{{ shortname }}"></td>
+		</tr>
+		<tr>
+			<td>Name:</td>
+			<td><input type="text" name="name" value="{{ name }}"></td>
+		</tr>
+		<tr>
+			<td>Available:</td>
+			<td><input type="checkbox" name="available" value="available" {{ 'checked' if available }}></td>
+		</tr>
+	</table>
+	<p>Content:</p>
+	<textarea name="editor">{{ content }}</textarea>
+	<br>	
+	<input type="submit" value="Save!">
+</form>
+<script>
+	CKEDITOR.replace("editor", {
+		skin: "{{ get_config('ckeditor.skin.name') }},{{ url_for('static', filename=get_config('ckeditor.skin.url')) }}",
+		fullPage: false,
+		height: "30em",
+		contentsCss: "{{ url_for('static', filename='styles/' + get_config('ckeditor.contents_css')) }}",
+		bodyId: "{{ get_config('ckeditor.body_id') }}",
+	});
+</script>
+{% endblock %}
